@@ -1,0 +1,4 @@
+"0","covid <- read.csv(""covid19postvaxstatewidestats.csv"")"
+"0","missing <- is.na(covid)"
+"0","byrow_missing <- apply(missing, MARGIN = 1, sum)"
+"0","covid_clean <- covid[byrow_missing == 0, ]"
