@@ -1,0 +1,32 @@
+---
+title: "COVID-19 Data Cleaning"
+author: "Celeste, Naisha, Neeti"
+date: "2026-11-03"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+```{r}
+covid <- read.csv("covid19postvaxstatewidestats.csv")
+head(covid)
+dim(covid)
+str(covid)
+sum(is.na(covid))
+```
+
+```{r}
+colSums(is.na(covid))
+```
+
+```{r}
+## Missing Values
+
+There are 36 missing values in the dataset. They are all in the six columns showing rates per 100,000. The missing values will be kept for now.
+```
+
+
+.
