@@ -14,7 +14,7 @@ This project examines whether COVID-19 vaccination is associated with lower rate
 - **covid19postvaxstatewidestats.csv:** Contains the COVID-19 data used in the analysis.
 - **statistical_test.Rmd:** Contains the R code used to clean and analyze the data and perform hypothesis tests.
 - **README.Rmd:** Provides an overview of the project files and instructions for reproducing the results.
-- **Covid_project.RMD:** 
+- **Final Report.RMD:** This file contains our whole final report, with all of our data, visualizations, analysis, and contributions.
 
 # Instructions to Reproduce Results
 
