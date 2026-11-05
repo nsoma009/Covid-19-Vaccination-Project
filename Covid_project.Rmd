@@ -85,12 +85,12 @@ mean(covid_clean$vaccinated_deaths_per_100k)
 This project looks at the relationship between COVID-19 vaccination and COVID-19 cases, hospitalizations, and deaths in California. We used data from February 2021 through March 2023 to compare vaccinated and unvaccinated individuals. We cleaned the dataset by removing rows with missing values and compared the average daily rates per 100,000 people. We also used statistical tests to examine whether the differences between vaccinated and unvaccinated individuals were significant. Our results showed that unvaccinated individuals had higher average rates of cases, hospitalizations, and deaths. The statistical results provided strong evidence supporting these findings.
 
 ## 6. Executive Summary
-1. This project examines the relationship between COVID-19 vaccination and cases, hospitalizations, and deaths in California.
+1. Analyzed California COVID-19 data from February 2021 to March 2023.
 
 2. Compared daily COVID-19 rates per 100,000 people between vaccinated and unvaccinated individuals.
 
-3. We compared average daily rates per 100,000 people between vaccinated and unvaccinated individuals.
+3. Found that unvaccinated individuals had higher average rates of COVID-19 cases.
 
-4. Unvaccinated individuals had higher average rates of COVID-19 cases, hospitalizations, and deaths.
+4. Unvaccinated individuals also had higher hospitalization and death rates.
 
-5. Our findings suggest that vaccination was associated with lower COVID-19 rates.
+5. Results suggest that COVID-19 vaccination was associated with lower rates of cases, hospitalizations, and deaths.
