@@ -1,0 +1,137 @@
+---
+title: "Data Visualization"
+author: "Naisha, Neeti, & Celeste"
+date: "2026-11-04"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+```{r}
+#Data
+names(covid_clean)
+str(covid_clean)
+
+#Data Visualization
+
+#state-wide data
+covid_state <- subset(covid_clean,
+                      area == "California" & 
+                      area_type == "State")
+covid_state$date <- as.Date(covid_state$date)
+covid_state <- covid_state[order(covid_state$date), ]
+print(covid_state)
+
+```
+
+
+```{r}
+#Graph 1: COVID-19 Cases per 100,000 people
+
+plot(covid_state$date,
+     covid_state$unvaccinated_cases_per_100k,
+     type = "l",
+     col = "red",
+     lwd = 2,
+     ylim = range(c(covid_state$unvaccinated_cases_per_100k,
+                    covid_state$vaccinated_cases_per_100k),
+                  na.rm = TRUE),
+     main = "COVID-19 Cases per 100,000 People",
+     ylab = "Cases per 100,000 People",
+     xlab = "Date")
+lines(covid_state$date,
+      covid_state$vaccinated_cases_per_100k,
+      col = "blue",
+      lwd = 2)
+legend("topright",
+       legend = c("Unvaccinated", "Vaccinated"),
+       col = c("red", "blue"),
+       lty = 1,
+       lwd = 2)
+
+```
+```{r}
+#Graph 2: COVID-19 Hospitalizations per 100,000 people
+
+plot(covid_state$date,
+     covid_state$unvaccinated_hosp_per_100k,
+     type = "l",
+     col = "red",
+     lwd = 2,
+     ylim = range(c(covid_state$unvaccinated_hosp_per_100k,
+                    covid_state$vaccinated_hosp_per_100k),
+                  na.rm = TRUE),
+     main = "COVID-19 Hospitalizations per 100,000 People",
+     ylab = "Hospitalizations per 100,000 People",
+     xlab = "Date")
+lines(covid_state$date,
+      covid_state$vaccinated_hosp_per_100k,
+      col = "blue",
+      lwd = 2)
+legend("topright",
+       legend = c("Unvaccinated", "Vaccinated"),
+       col = c("red", "blue"),
+       lty = 1,
+       lwd = 2)
+```
+
+```{r}
+#Graph 3: COVID-19 Deaths per 100,000 people
+
+plot(covid_state$date,
+     covid_state$unvaccinated_deaths_per_100k,
+     type = "l",
+     col = "red",
+     lwd = 2,
+     ylim = range(c(covid_state$unvaccinated_deaths_per_100k,
+                    covid_state$vaccinated_deaths_per_100k),
+                  na.rm = TRUE),
+     main = "COVID-19 Deaths per 100,000 People",
+     ylab = "Deaths per 100,000 People",
+     xlab = "Date")
+lines(covid_state$date,
+      covid_state$vaccinated_deaths_per_100k,
+      col = "blue",
+      lwd = 2)
+legend("topright",
+       legend = c("Unvaccinated", "Vaccinated"),
+       col = c("red", "blue"),
+       lty = 1,
+       lwd = 2)
+```
+
+3. Analysis 
+
+  We conducted a time-series line graph analysis to compare the rate of COVID-19 in vaccinated and unvaccinated individuals using different variables such as the amount of cases,hospitalizations, and number of deaths. 
+  The first graph compares COVID-19 rates between vaccinated and unvaccinated individuals in California over time. The graph shows that both groups experienced increases and decreases in cases throughout the period being analyzed, July 2021 to January 2023. However, the unvaccinated individuals had a larger amount of cases than the vaccinated group throughout the whole period. There was also a noticeable increase in cases around January 2022. Overall, the graph reflects that there was a greater rate of cases for the  unvaccinated group compared to the vaccinated group. 
+  The second graph compares the hospitalization rates of individuals with vaccinations vs unvaccinated individuals. The unvaccinated group generally had higher hospitalization rates throughout the study period. Both groups experienced increases and decreases, especially between July 2021 to March 2022, though the vaccinated group's hospitalization rates remained lower than the unvaccinated group. This suggests that vaccinated individuals were less likely to experience hospitalization compared to unvaccinated individuals. 
+  The third graph compares COVID-19 death rates between vaccinated and unvaccinated individuals. The difference between the two groups is very noticeable in this graph, as unvaccinated individuals generally experienced higher death rates, while vaccinated individuals had considerably lower rates throughout the study period. Although both groups experienced increases around early 2022, the vaccinated group's death rates remained much lower. This implies that vaccination was associated with a lower risk of death from COVID-19. 
+  One major pattern across all three graphs is that unvaccinated individuals generally had higher rates of COVID-19 cases, hospitalizations, and deaths compared to vaccinated individuals. Another pattern shown is that both groups experienced increases and decreases over the time period studied. Around early 2022, there was a noticeable increase in all three graphs however, the vaccinated group maintained lower rates. The differences were mainly shown in hospitalization and death rates. This suggests that vaccination may have been especially important in reducing the risk of more severe COVID-19 outcomes. 
+  The patterns observed in the graphs are consistent with the directions of our original statistical test results. Our calculated z-scores were negative for all three comparisons: 
+  - COVID-19 cases: -932.5414
+  - Hospitalizations: -301.946
+  - Deaths: -150.9896
+The negative z-scores indicate that the calculated rates for vaccinated individuals were lower than those for unvaccinated individuals. 
+  Overall, the three graphs show that vaccinated individuals generally experienced lower rates of COVID-19 cases, hospitalizations, and deaths compared to unvaccinated individuals in California. The differences suggest that vaccination was associated with better outcomes, specifically when looking at hospitalizations and deaths. Although both groups experienced increases in COVID-19 rates during certain periods, the vaccinated group generally maintained lower rates. These findings imply that vaccination played an important role in reducing the burden of COVID-19 among the vaccinated population.
+  
+
+
+4. Conclusions & Limitations
+
+  The most important finding from our project is that vaccinated individuals generally experienced lower COVID-19 case, hospitalization, and death rates compared to unvaccinated individuals in California. Throughout all three graphs, the unvaccinated group consistently showed higher rates with noticeable differences for hospitalizations and deaths. This suggests that vaccination was associated with lower rates of COVID-19. 
+  Our hypothesis was that vaccinated individuals would experience lower rates of COVID-19 cases, hospitalizations, and deaths compared to unvaccinated individuals in California. Based on the patterns observed in our graphs, our findings support this hypothesis. The vaccinated group generally had lower rates across all three outcomes.
+  Our research question asked: To what extent did COVID-19 vaccination reduce COVID-19 cases, hospitalizations, and deaths among vaccinated individuals compared to unvaccinated individuals in California? Based on our graphs, vaccination was associated with lower rates of all three outcomes. Vaccinated individuals generally experienced fewer COVID-19 cases, hospitalizations, and deaths per 100,000 people than unvaccinated individuals. The differences were especially noticeable for hospitalizations and deaths, suggesting that vaccination was associated with a lower risk of serious COVID-19 outcomes, particularly hospitalization and death. Overall, our findings suggest that vaccination was associated with a meaningful reduction in COVID-19 outcomes among vaccinated individuals. However, the exact percentage reduction must be calculated to measure the extent of these differences.
+  Despite the useful findings from our analysis, there are several limitations to consider. First, our dataset focuses only on California statewide data, so the results may not represent other states or populations. Another limitation is that our dataset compares vaccinated and unvaccinated populations without providing individual information about age, medical history, underlying health conditions, or other factors that could affect someone's risk of COVID-19. Finally, our findings show an association between vaccination status and COVID-19 outcomes, but they do not necessarily prove that vaccination alone caused the differences. Other factors may have contributed to the outcomes. Overall, despite these limitations, our project provides useful insight into the differences in COVID-19 rates between vaccinated and unvaccinated individuals in California.
+
+
+
+
