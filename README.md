@@ -20,7 +20,7 @@ This project examines the relationship between COVID-19 vaccination and COVID-19
 - **covid19postvaxstatewidestats.csv:** Contains the COVID-19 data used in the analysis.
 - **statistical_test.Rmd:** Contains the statistical tests comparing COVID-19 case, hospitalization, and death rates between vaccinated and unvaccinated individuals.
 - **statistical_tests.R:** This is the updated version of the statistical tests Rmd, using a function to simplify the old code, and it is sourced in the final project rmd. 
-- **Final Report.RMD:** This file contains our whole final report, with all of our data, visualizations, analysis, and contributions.
+- **Final Report.Rmd:** This file contains our whole final report, with all of our data, visualizations, analysis, and contributions.
 
 # How to Run the Code
 1. Download or clone the project repository from GitHub.
