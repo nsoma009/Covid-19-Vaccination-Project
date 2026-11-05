@@ -1,2 +1,0 @@
-"0","covid <- read.csv(""covid19postvaxstatewidestats.csv"")"
-"0","head(covid)"
