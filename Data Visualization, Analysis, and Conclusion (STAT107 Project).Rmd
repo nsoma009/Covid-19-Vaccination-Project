@@ -122,7 +122,7 @@ legend("topright",
   - Deaths: -150.9896
 The negative z-scores indicate that the calculated rates for vaccinated individuals were lower than those for unvaccinated individuals. 
   Overall, the three graphs show that vaccinated individuals generally experienced lower rates of COVID-19 cases, hospitalizations, and deaths compared to unvaccinated individuals in California. The differences suggest that vaccination was associated with better outcomes, specifically when looking at hospitalizations and deaths. Although both groups experienced increases in COVID-19 rates during certain periods, the vaccinated group generally maintained lower rates. These findings imply that vaccination played an important role in reducing the burden of COVID-19 among the vaccinated population.
-  
+  For future work, we would like to create three additional histograms to further analyze the differences between vaccinated and unvaccinated individuals. Each histogram would focus on one outcome: COVID-19 cases, hospitalizations, and deaths. These graphs would help us better understand how the rates are distributed between the two groups and identify any patterns or differences that may not be as noticeable in the time-series line graphs. This would allow us to expand our analysis and gain a better understanding of the relationship between vaccination and COVID-19 outcomes.
 
 
 4. Conclusions & Limitations
