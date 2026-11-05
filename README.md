@@ -12,6 +12,7 @@ This project examines the relationship between COVID-19 vaccination and COVID-19
 # File Descriptions
 
 - **00-requirements.R:** This is an RScript that contains all of the libraries that were used in our project.
+- **01-functions.R:** This file is used to explain all the functions we created in this project.
 - **Covid-19-Vaccination-Project.Rproj:** This is the folder that we have in our finder, including all of the other files.
 - **Covid_project.Rmd:** Contains the data cleaning process, missing-value checks, average rate comparisons, abstract, and executive summary.
 - **Data Visualization, Analysis, and Conclusion (STAT107 Project).Rmd:** This contains the original work for visualization, along with the original analysis and conclusion. This was eventually copied into our Final Report.
