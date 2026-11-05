@@ -9,7 +9,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
+## 1. Loading and Inspecting the Dataset
 ```{r}
 covid <- read.csv("covid19postvaxstatewidestats.csv")
 head(covid)
@@ -17,21 +17,74 @@ dim(covid)
 str(covid)
 ```
 
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
+## 2. Checking for Missing Values
+```{r}
+summary(covid)
 ```
 
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
+```{r}
+head(covid, 10)
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+```{r}
+head(covid[, c("date",
+               "unvaccinated_cases_per_100k",
+               "vaccinated_cases_per_100k",
+               "unvaccinated_hosp_per_100k",
+               "vaccinated_hosp_per_100k",
+               "unvaccinated_deaths_per_100k",
+               "vaccinated_deaths_per_100k")], 10)
+```
+
+```{r}
+covid[is.na(covid$unvaccinated_cases_per_100k),
+      c("date",
+        "unvaccinated_cases_per_100k",
+        "vaccinated_cases_per_100k",
+        "unvaccinated_hosp_per_100k",
+        "vaccinated_hosp_per_100k",
+        "unvaccinated_deaths_per_100k",
+        "vaccinated_deaths_per_100k")]
+```
+
+This data set contains 6 missing values in each of the 6 rate variables. After looking at the first 10 rows, we can see that the missing values occur during the first six days of the data set (February 1-6, 2021). We were able to confirm that the remaining values contain all the variables necessary. These first six dates will be excluded from the analysis. 
+
+
+## 3. Preparing the Dataset
+```{r}
+missing <- is.na(covid)
+byrow_missing <- apply(missing, MARGIN = 1, sum)
+covid_clean <- covid[byrow_missing == 0, ]
+
+dim(covid_clean)
+```
+We cleaned the dataset by removing the first six rows because they contained missing values. The cleaned dataset contains 783 observations and 17 columns. We kept the original dataset unchanged.
+
+## 4. Comparing Average Rates
+The average rates were higher among unvaccinated individuals for COVID-19 cases, hospitalizations, and deaths. This suggests that vaccinated individuals experienced lower rates across all three measurements. These results support our hypothesis that vaccination is associated with lower COVID-19 rates.
+
+```{r}
+mean(covid_clean$unvaccinated_cases_per_100k)
+mean(covid_clean$vaccinated_cases_per_100k)
+
+mean(covid_clean$unvaccinated_hosp_per_100k)
+mean(covid_clean$vaccinated_hosp_per_100k)
+
+mean(covid_clean$unvaccinated_deaths_per_100k)
+mean(covid_clean$vaccinated_deaths_per_100k)
+```
+
+
+## 5. Abstract
+This project looks at the relationship between COVID-19 vaccination and COVID-19 cases, hospitalizations, and deaths in California. We used data from February 2021 through March 2023 to compare vaccinated and unvaccinated individuals. We cleaned the dataset by removing rows with missing values and compared the average daily rates per 100,000 people. Our results showed that unvaccinated individuals had higher average rates of cases, hospitalizations, and deaths than vaccinated individuals. These findings suggest that vaccination was associated with lower COVID-19 rates in California.
+
+## 6. Executive Summary
+1. This project examines the relationship between COVID-19 vaccination and cases, hospitalizations, and deaths in California.
+
+2. We used California COVID-19 data from February 2021 through March 2023.
+
+3. We compared average daily rates per 100,000 people between vaccinated and unvaccinated individuals.
+
+4. Unvaccinated individuals had higher average rates of COVID-19 cases, hospitalizations, and deaths.
+
+5. Our findings suggest that vaccination was associated with lower COVID-19 rates.
