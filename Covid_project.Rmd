@@ -8,6 +8,13 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+##Data Desciption
+The data for this project came from the California Department of Public Health's COVID-19 Post-Vaccination Statewide Stats dataset. It contains information about COVID-19 cases, hospitalizations, and deaths among vaccinated and unvaccinated individuals in California from February 2021 through March 2023.
+
+The original dataset contained 789 observations and 17 variables. The variables included the date, area, area type, the number of COVID-19 cases, hospitalizations, and deaths among vaccinated and unvaccinated individuals, the population sizes of both groups, and the corresponding rates per 100,000 people.
+
+This was observational data collected from public health records, not data generated through randomized simulations. We used the existing data to compare COVID-19 rates between vaccinated and unvaccinated individuals.
+
 
 ## 1. Loading and Inspecting the Dataset
 ```{r}
